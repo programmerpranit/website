@@ -15,6 +15,7 @@ function MobileNav({open, setOpen}) {
             </div>
             <div className=" text-center flex flex-col ml-4 pt-5">
 
+                    <Link  href={'/'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Home </p></Link>
                     <Link  href={'/about'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> About </p></Link>
                     <Link  href={'/about1'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Services </p></Link>
                     <Link  href={'/about3'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import About from "../components/About";
+import Projects from "../components/Projects";
+import Services from "../components/Services";
 
 export default function Home() {
   return (
@@ -16,7 +18,7 @@ export default function Home() {
         <div className=" pcontainer h-[90vh] flex flex-col md:flex-row items-center">
 
           <div className="p-4 md:w-3/5 md:pt-0 pt-20">
-            <h3>HELLO --------------------</h3>
+            <h3>HELLO</h3>
             <h1>I AM PRANT PATIL</h1>
             <h5>SOFTWARE ENGINEER</h5>
           </div>
@@ -35,6 +37,10 @@ export default function Home() {
       </section>
 
       <About/>
+
+      <Services/>
+
+      <Projects/>
 
     </>
   );

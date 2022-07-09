@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <section>
-      <div className="pcontainer pt-20 items-center flex md:flex-row flex-col-reverse">
+      <div className="pcontainer h-[100vh] items-center flex md:flex-row flex-col-reverse">
         <div className="image w-full md:w-1/2 md:visible invisible">
             <img src="home-right.png" alt="" />
         </div>
