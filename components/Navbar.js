@@ -7,7 +7,7 @@ import Link from 'next/link'
 //     </a>
 // }
 
-function MobileNav({open, setOpen}) {
+function MobileNav({open, setOpen, user}) {
     return (
         <div className={`absolute top-0 left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter  `}>
             <div className="flex items-center justify-center filter  bg-white h-20"> {/*logo container*/}
@@ -15,24 +15,29 @@ function MobileNav({open, setOpen}) {
             </div>
             <div className=" text-center flex flex-col ml-4 pt-5">
 
-                    <Link  href={'/'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Home </p></Link>
-                    <Link  href={'/about'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> About </p></Link>
-                    <Link  href={'/about1'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Services </p></Link>
-                    <Link  href={'/about3'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>
-                    <Link  href={'/about4'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Blog </p></Link>
-                    <Link  href={'/about5'}><p className='py-5' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Contact </p></Link>
+                    <Link  href={'/'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Home </p></Link>
+                    <Link  href={'/about'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> About </p></Link>
+                    <Link  href={'/about1'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Services </p></Link>
+                    <Link  href={'/about3'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>
+                    <Link  href={'/about4'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Blog </p></Link>
+                    <Link  href={'/about5'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Contact </p></Link>
+                    { user != null && <Link  href={'/about5'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> My Account </p></Link>}
+
+                    { user == null && 
+                    <Link href={'/login'}><p className='cursor-pointer w-min m-auto my-3  text-black uppercase font-semibold py-2 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</p></Link>}
 
             </div>  
         </div>
     )
 }
 
-export default function Navbar() {
+export default function Navbar({user}) {
 
     const [open, setOpen] = useState(false)
     return (
         <nav className="flex filter bg-white px-4 py-4 h-20 items-center pcontainer">
-            <MobileNav open={open} setOpen={setOpen}/>
+                
+            <MobileNav open={open} setOpen={setOpen} user={user} />
             <div className="w-3/12 flex items-center">
                 <a className="text-2xl font-semibold" href="#">Pranit</a>
             </div>
@@ -49,10 +54,14 @@ export default function Navbar() {
 
                 <div className="hidden md:flex list-none">
 
-                    <Link href={'/about1'}><li className='mx-5 text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about2'}><li className='mx-5 text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about3'}><li className='mx-5 text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about4'}><li className='mx-5 text-sm text-black uppercase font-semibold'> About</li></Link>
+                    <Link href={'/about1'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+                    <Link href={'/about2'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+                    <Link href={'/about3'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+                    <Link href={'/about4'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+                    { user == null && 
+                    <Link href={'/login'}><li className='cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold py-1 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</li></Link>}
+                    { user != null && 
+                    <Link href={'/myaccount'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'>My Account</li></Link>}
 
 
                 </div>

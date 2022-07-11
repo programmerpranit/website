@@ -4,6 +4,9 @@ import About from "../components/About";
 import Projects from "../components/Projects";
 import Services from "../components/Services";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Home() {
   return (
     <>
@@ -12,6 +15,18 @@ export default function Home() {
         <meta name="description" content="Portfolio Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <section className="intro">
 
