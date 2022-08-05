@@ -34,7 +34,7 @@ export default function Home() {
 
           <div className="p-4 md:w-3/5 md:pt-0 pt-20">
             <h3>HELLO</h3>
-            <h1>I AM PRANT PATIL</h1>
+            <h1 className="md:text-7xl mb-5 mt-3">I AM PRANT PATIL</h1>
             <h5>SOFTWARE ENGINEER</h5>
           </div>
 

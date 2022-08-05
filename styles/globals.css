@@ -26,6 +26,7 @@ button {
 
 p {
   color: #555555;
+  font-size: 18px;
 }
 
 a {
@@ -52,15 +53,17 @@ h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  line-height: 42px;
   /* font-weight: 500; */
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 50px;
   font-weight: 800;
-  text-transform: uppercase;
   margin-bottom: 15px;
 }
 
@@ -78,11 +81,18 @@ h5 {
 }
 
 @media screen and (max-width: 480px) {
-  h1 {
+  /* h1 {
     font-size: 3.125rem;
     line-height: 60px;
     margin-bottom: 25px;
     margin-top: 20px;
+  } */
+
+  h1 {
+    font-size: 1.75rem;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    line-height: 30px;
     /* font-weight: 500; */
   }
 

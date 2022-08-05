@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import user from "./api/auth/user";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,13 +42,14 @@ const Myaccount = ({ setUser }) => {
     );
     const response = await fetchResponse.json();
 
+
     if (fetchResponse.status == 200) {
       setToken(token);
       setName(response.name);
       setEmail(response.email);
     } else {
       toast.error("Login first to see account details");
-      router.push("/login");
+      router.push("/account/login");
     }
   };
 
@@ -67,10 +67,17 @@ const Myaccount = ({ setUser }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/user",
+      "http://localhost:3000/api/auth/changename",
       settings
     );
     const response = await fetchResponse.json();
+
+    if (fetchResponse.status == 200) {
+      toast.success(response.message);
+    } else {
+      toast.error(response.message);
+    }
+
   };
 
   useEffect(() => {
@@ -118,15 +125,15 @@ const Myaccount = ({ setUser }) => {
             Change Name
           </button>
 
-          <Link href={"/change-password"}>
+          {/* <Link href={"/change-password"}>
             <button className="cursor-pointer my-5 md:w-1/2 text-sm text-black uppercase font-semibold py-1 px-4 rounded-md bg-white  hover:bg-white hover:text-blue border-blue border ease-in-out">
               Change Password
             </button>
-          </Link>
+          </Link> */}
 
           <button
             onClick={logout}
-            className="cursor-pointer md:w-1/2 text-sm  uppercase font-semibold py-1 px-4 rounded-md text-white  hover:bg-white hover:text-blue border-blue border ease-in-out"
+            className="cursor-pointer my-4 md:w-1/2 text-sm  uppercase font-semibold py-1 px-4 rounded-md text-white  hover:bg-white hover:text-blue border-blue border ease-in-out"
           >
             Logout
           </button>

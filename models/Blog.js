@@ -2,9 +2,15 @@ import mongoose from "mongoose";
 
 const BlogSchema = new mongoose.Schema({
 
-    title: {type: String, required: true, default:""},
-    email: {type: String, required: true, unique:True},
-    password: {type: String, required: true},
+    title: {type: String, required: true, unique: true},
+    image: {type: String, default:""},
+    content: {type: String, required:true, default:""},
+    slug: {type: String, required:true, unique: true},
+    category: {type: String, default:""},
+    tags: [
+        {type: String}
+    ],
+    published: {type: Boolean, required:true, default:false}
     
     
 }, {timestamps: true})

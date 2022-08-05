@@ -56,7 +56,7 @@ const Projects = () => {
           {["All", "APP", "Web", "BlockChain", "ML"].map((item, index) => (
             <div key={index} onClick={() => handleWorkFilter(item)}>
               <li
-                className={`mr-7 hover:text-blue cursor-pointer text-sm list-none text-black uppercase font-semibold ${
+                className={`mr-7 hover:text-blue cursor-pointer text-sm list-none uppercase font-semibold ${
                   activeFilter === item ? "text-blue font-bold" : ""
                 }`}
               >
@@ -69,7 +69,7 @@ const Projects = () => {
         <div className="flex flex-wrap">
           {filterWork.map((work, index) => (
             <div className="p-4 md:w-1/3" key={index}>
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ease-in-out transition-shadow ">
                 <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src="https://dummyimage.com/721x401"

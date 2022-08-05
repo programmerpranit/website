@@ -21,10 +21,10 @@ function MobileNav({open, setOpen, user}) {
                     <Link  href={'/about3'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>
                     <Link  href={'/about4'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Blog </p></Link>
                     <Link  href={'/about5'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Contact </p></Link>
-                    { user != null && <Link  href={'/about5'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> My Account </p></Link>}
+                    { user != null && <Link  href={'/account'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> My Account </p></Link>}
 
                     { user == null && 
-                    <Link href={'/login'}><p className='cursor-pointer w-min m-auto my-3  text-black uppercase font-semibold py-2 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</p></Link>}
+                    <Link href={'/account/login'}><p className='cursor-pointer w-min m-auto my-3  text-black uppercase font-semibold py-2 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</p></Link>}
 
             </div>  
         </div>
@@ -59,9 +59,9 @@ export default function Navbar({user}) {
                     <Link href={'/about3'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
                     <Link href={'/about4'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
                     { user == null && 
-                    <Link href={'/login'}><li className='cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold py-1 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</li></Link>}
+                    <Link href={'/account/login'}><li className='cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold py-1 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</li></Link>}
                     { user != null && 
-                    <Link href={'/myaccount'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'>My Account</li></Link>}
+                    <Link href={'/account'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'>My Account</li></Link>}
 
 
                 </div>

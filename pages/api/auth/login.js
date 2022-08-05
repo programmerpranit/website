@@ -21,7 +21,7 @@ const handler = async (req, res) => {
 
             if (email == user.email && password == pass) {
                 
-                var token = jwt.sign({ email: user.email, name: user.name }, 'jwtsecret', {expiresIn: "30d"})
+                var token = jwt.sign({name: user.name, email: user.email, superuser: user.superuser}, 'jwtsecret', {expiresIn: "30d"})
 
                 res.status(200).json({ message: "Successfully Logged In", token })
             }

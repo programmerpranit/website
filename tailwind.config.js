@@ -12,6 +12,7 @@ module.exports = {
         red: '#de3618',
         white: '#ffffff',
         bluetint: '#daf0ff',
+        // skyblue: '#daf0ff',
       }
     }
 
