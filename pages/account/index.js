@@ -67,7 +67,7 @@ const Myaccount = ({ setUser }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/changename",
+      "https://pranitpatil.com/api/auth/changename",
       settings
     );
     const response = await fetchResponse.json();
