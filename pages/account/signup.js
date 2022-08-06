@@ -38,7 +38,7 @@ const SignUp = ({setUser}) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/signup",
+      "https://pranitpatil.com/api/auth/signup",
       settings
     );
     const response = await fetchResponse.json();

@@ -32,7 +32,7 @@ const Login = ({setUser}) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/login",
+      "https://pranitpatil.com/api/auth/login",
       settings
     );
     const response = await fetchResponse.json();
