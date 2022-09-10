@@ -2,7 +2,7 @@ import { data } from 'autoprefixer'
 import React from 'react'
 import dbConnect from '../../../middleware/mongo'
 import Project from '../../../models/Project'
-
+import baseUrl from "../../../util/baseUrl";
 
 const EditProject = ({project}) => {
   return (

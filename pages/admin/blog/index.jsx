@@ -3,7 +3,7 @@ import dbConnect from "../../../middleware/mongo";
 import Blog from "../../../models/Blog";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import baseUrl from "../../util/baseUrl";
+import baseUrl from "../../../util/baseUrl";
 
 const BlogAdmin = ({ blogs }) => {
 

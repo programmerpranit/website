@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import baseUrl from "../../../util/baseUrl"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import slugify from "slugify";
+import baseUrl from "../../../util/baseUrl";
 
 const AddProject = () => {
   const router = useRouter();

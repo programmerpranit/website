@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import baseUrl from "../../util/baseUrl";
+import baseUrl from "../../../util/baseUrl";
 
 import { Editor } from "@tinymce/tinymce-react";
 
