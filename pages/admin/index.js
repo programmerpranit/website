@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseUrl from "../../util/baseUrl";
+
 
 const AdminPanel = () => {
   const router = useRouter();
@@ -27,7 +29,7 @@ const AdminPanel = () => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/user",
+      `${baseUrl}/api/auth/user`,
       settings
     );
     const response = await fetchResponse.json();
@@ -75,6 +77,18 @@ const AdminPanel = () => {
         <br/>
 
         <Link href={"/admin/blog/addblog"}>
+          <h4 className="cursor-pointer hover:text-blue">+ Add</h4>
+        </Link>
+      </div>
+
+      <div className="model flex justify-between w-3/4 border-2 shadow-xl border-blue rounded-md hover:bg-sky-50 p-3">
+        <Link href={"/admin/project"}>
+          <h4 className="cursor-pointer hover:text-blue">Projects</h4>
+        </Link>
+
+        <br/>
+
+        <Link href={"/admin/project/add"}>
           <h4 className="cursor-pointer hover:text-blue">+ Add</h4>
         </Link>
       </div>

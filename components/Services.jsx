@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <section>
       <div className="pcontainer text-center">
-        <h2>SKILLS</h2>
+        <h2 className="text-4xl">SKILLS</h2>
         <p className="md:w-1/2 px-5 m-auto ">
         I love to explore different tech domains. I try to solve real-world problems using tech.  
         </p>
@@ -15,7 +15,7 @@ const Services = () => {
           <div className="xl:w-1/4 md:w-1/2 p-3 ">
             <div className="bg-gray-100 p-6 rounded-lg">
               
-              <Image src={'/app.svg'} alt={'app'} width={500} height={450}></Image>
+              <Image src={'/app.svg'} alt={'app'} width={500} height={440}></Image>
               
               {/* <img
                 className="h-40 rounded w-full object-cover object-center mb-6"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseUrl from "../../util/baseUrl";
 
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -25,12 +26,6 @@ const EditBlog = ({ blog }) => {
   const [published, setPublished] = useState(blog?.published);
 
   const [blogId, setBlogId] = useState(null);
-
-  // const log = () => {
-  //   if (editorRef.current) {
-  //     setContent(editorRef.current.getContent());
-  //   }
-  // };
 
   const handleOnChange = (e) => {
     if (e.target.name == "title") {
@@ -72,7 +67,7 @@ const EditBlog = ({ blog }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/auth/user",
+      `${baseUrl}/api/auth/user`,
       settings
     );
     const response = await fetchResponse.json();
@@ -143,7 +138,7 @@ const EditBlog = ({ blog }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/blog",
+      `${baseUrl}/api/blog`,
       settings
     );
     const response = await fetchResponse.json();
@@ -187,7 +182,7 @@ const EditBlog = ({ blog }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "http://localhost:3000/api/blog",
+      `${baseUrl}/api/blog`,
       settings
     );
     const response = await fetchResponse.json();

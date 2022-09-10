@@ -1,45 +1,47 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import dbConnect from "../../middleware/mongo";
+import Blog from "../../models/Blog";
 
-const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
+const Blogs = ({blogList}) => {
+  // const [blogs, setBlogs] = useState([]);
 
-  const data = [
-    {
-      title: "Title 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
-      category: "android studio",
-      tags: ["tag1", "tag2", "tag3"],
-      slug: "title1",
-    },
-    {
-      title: "Title 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
-      category: "android studio",
-      tags: ["tag1", "tag2", "tag3"],
-      slug: "title2",
-    },
-    {
-      title: "Title 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
-      category: "android studio",
-      tags: ["tag1", "tag2", "tag3"],
-      slug: "title3",
-    },
-  ];
+  // const data = [
+  //   {
+  //     title: "Title 1",
+  //     description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
+  //     category: "android studio",
+  //     tags: ["tag1", "tag2", "tag3"],
+  //     slug: "title1",
+  //   },
+  //   {
+  //     title: "Title 2",
+  //     description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
+  //     category: "android studio",
+  //     tags: ["tag1", "tag2", "tag3"],
+  //     slug: "title2",
+  //   },
+  //   {
+  //     title: "Title 3",
+  //     description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae unde ipsum eius eligendi! Explicabo ea ducimus rem quos ipsa! A, atque qui ea est aliquid consectetur adipisci incidunt iure modi minus ad quos quia dolor nemo tempore culpa explicabo quisquam assumenda ipsa. Neque non doloribus consequatur veniam facilis obcaecati doloremque!",
+  //     category: "android studio",
+  //     tags: ["tag1", "tag2", "tag3"],
+  //     slug: "title3",
+  //   },
+  // ];
 
-  useEffect(() => {
-    setBlogs(data);
-  }, []);
+  // useEffect(() => {
+  //   setBlogs(data);
+  // }, []);
 
   return (
     <section className="text-gray-600 body-font">
       <div className="pcontainer px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
-          {blogs.map((blog) => (
+          {blogList && blogList.map((blog) => (
             <div className="p-4 md:w-1/3" key={blog.slug}>
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <img
@@ -100,3 +102,22 @@ const Blogs = () => {
 };
 
 export default Blogs;
+
+
+export async function getServerSideProps() {
+  await dbConnect();
+
+  let blogList;
+
+  try {
+    const blogs = await Blog.find({published:true})
+    blogList = JSON.parse(JSON.stringify(blogs));
+  } catch (error) {
+    const blogs = null;
+    blogList = JSON.parse(JSON.stringify(blogs));
+  }
+
+  return {
+    props: { blogList }, // will be passed to the page component as props
+  };
+}

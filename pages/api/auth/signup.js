@@ -16,7 +16,9 @@ const handler = async (req, res) => {
         try {
 
             let u = new User({name, email, password:CryptoJS.AES.encrypt(req.body.password, 'secret123').toString()})
+            
             await u.save();
+
             res.status(201).json({ message: "Account Created Successfully" })
 
         } catch (error) {

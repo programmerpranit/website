@@ -2,10 +2,50 @@ import React, { useEffect, useState } from "react";
 import dbConnect from "../../../middleware/mongo";
 import Blog from "../../../models/Blog";
 import Link from "next/link";
-
-
+import { useRouter } from "next/router";
+import baseUrl from "../../util/baseUrl";
 
 const BlogAdmin = ({ blogs }) => {
+
+  const [superUser, setSuperUser] = useState(null);
+  const router = useRouter();
+
+  const validate = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+
+    var data = {
+      token: token,
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/auth/user`,
+      settings
+    );
+    const response = await fetchResponse.json();
+
+    if (fetchResponse.status == 200) {
+      setSuperUser(response.superuser);
+      // console.log(response)
+    } else {
+      toast.error("You not have access to this page");
+    }
+  };
+
+  useEffect(() => {
+    validate();
+  }, []);
 
   return (
     <div className="pcontainer px-5 py-24 mx-auto">

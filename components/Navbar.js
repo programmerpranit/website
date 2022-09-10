@@ -15,12 +15,14 @@ function MobileNav({open, setOpen, user}) {
             </div>
             <div className=" text-center flex flex-col ml-4 pt-5">
 
+                
+
                     <Link  href={'/'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Home </p></Link>
                     <Link  href={'/about'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> About </p></Link>
-                    <Link  href={'/about1'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Services </p></Link>
-                    <Link  href={'/about3'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>
-                    <Link  href={'/about4'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Blog </p></Link>
-                    <Link  href={'/about5'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Contact </p></Link>
+                    
+                    <Link  href={'/projects'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Portfolio </p></Link>
+                    <Link  href={'/blog'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Blog </p></Link>
+                    <Link  href={'/contact'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> Contact </p></Link>
                     { user != null && <Link  href={'/account'}><p className='py-5 text-black uppercase font-semibold' onClick={() => setTimeout(() => {setOpen(!open)}, 100)}> My Account </p></Link>}
 
                     { user == null && 
@@ -54,10 +56,12 @@ export default function Navbar({user}) {
 
                 <div className="hidden md:flex list-none">
 
-                    <Link href={'/about1'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about2'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about3'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
-                    <Link href={'/about4'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+
+                    <Link href={'/'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> Home</li></Link>
+                    <Link href={'/about'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> About</li></Link>
+                    <Link href={'/projects'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> Portfolio</li></Link>
+                    <Link href={'/blog'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> Blog</li></Link>
+                    <Link href={'/contact'}><li className='hover:text-blue cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold'> Contact</li></Link>
                     { user == null && 
                     <Link href={'/account/login'}><li className='cursor-pointer mx-5 m-auto text-sm text-black uppercase font-semibold py-1 px-4 rounded-md  hover:bg-white hover:text-blue border-blue border ease-in-out'>Login</li></Link>}
                     { user != null && 

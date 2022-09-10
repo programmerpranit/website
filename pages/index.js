@@ -3,6 +3,7 @@ import Image from "next/image";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import Services from "../components/Services";
+import baseurl from "../util/baseUrl"
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import baseUrl from "../util/baseUrl";
 
 const Projects = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
+
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -13,6 +15,18 @@ const Projects = () => {
         setFilterWork(works.filter((work) => work.tag.includes(item)));
     }
   };
+
+  const fetchWork = async () => {
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/project/list`
+    );
+    const response = await fetchResponse.json();
+
+    if (fetchResponse.status == 200) {
+      setFilterWork(response);
+      setWorks(response);
+    } 
+  }
 
   useEffect(() => {
     const data = [
@@ -42,15 +56,16 @@ const Projects = () => {
       },
     ];
 
-    setFilterWork(data);
-    setWorks(data);
+
+    fetchWork();
+    
   }, []);
 
   return (
     <section>
       <div className="pcontainer pt-40">
-        <h2 className="mt-0 pt-0 leading-5">QUALITY WORK</h2>
-        <h2>RECENTLY DONE PROJECT</h2>
+        <h2 className="mt-0 pt-0 text-4xl leading-5">QUALITY WORK</h2>
+        <h2 className="text-4xl">RECENTLY DONE PROJECT</h2>
 
         <div className="flex mt-10">
           {["All", "APP", "Web", "BlockChain", "ML"].map((item, index) => (
@@ -78,7 +93,7 @@ const Projects = () => {
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     <div className="flex">
-                    { work.tag.map((category)=>(
+                    {work.tag && work.tag.map((category)=>(
                         <li key={category}
                             className='mr-2 border-2 rounded px-2 hover:text-blue text-sm list-none uppercase font-semibold'
                         >{category}</li>
@@ -91,11 +106,11 @@ const Projects = () => {
                   <p className="leading-relaxed mb-3">
                     {work.description}
                   </p>
-                  <div className="flex items-center flex-wrap">
+                  {/* <div className="flex items-center flex-wrap">
                     <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                       Learn More
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

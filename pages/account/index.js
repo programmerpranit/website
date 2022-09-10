@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseUrl from "../../util/baseUrl";
 
 const Myaccount = ({ setUser }) => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const Myaccount = ({ setUser }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "https://pranitpatil.com/api/auth/user",
+      `${baseUrl}/api/auth/user`,
       settings
     );
     const response = await fetchResponse.json();
@@ -67,7 +68,7 @@ const Myaccount = ({ setUser }) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "https://pranitpatil.com/api/auth/changename",
+      `${baseUrl}/api/auth/changename`,
       settings
     );
     const response = await fetchResponse.json();

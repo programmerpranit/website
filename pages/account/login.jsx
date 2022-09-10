@@ -3,6 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import baseUrl from "../../util/baseUrl";
+
 
 const Login = ({setUser}) => {
   const router = useRouter();
@@ -32,7 +34,7 @@ const Login = ({setUser}) => {
       body: JSON.stringify(data),
     };
     const fetchResponse = await fetch(
-      "https://pranitpatil.com/api/auth/login",
+      `${baseUrl}/api/auth/login`,
       settings
     );
     const response = await fetchResponse.json();
