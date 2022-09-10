@@ -18,7 +18,7 @@ const About = () => {
           
           <a href="/resume_pranit_patil.pdf" download>
 
-          <button className="inline-flex text-white py-2 px-8 focus:outline-none rounded-md  hover:bg-white hover:text-blue hover:border-blue hover:border-2 mt-5">My Resume</button>
+          <button className="inline-flex text-white py-2 px-8 border-2 focus:outline-none rounded-md  hover:bg-white hover:text-blue hover:border-blue hover:border-2 mt-5">My Resume</button>
           </a>
         </div>
       </div>

@@ -6,9 +6,41 @@ const handler = async (req, res) => {
 
   if (req.method == "GET") {
 
-    const data = await Project.find({});
+    try {
+      const data = await Project.find({});
+      return res.status(200).json(data);
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json(error);
+    }
 
-    return res.status(200).json(data);
+    // const data = [
+    //   {
+    //     name: "Portfolio Website",
+    //     description: "Lorem ipsum dolor sit amet consectetur adipisicing",
+    //     image: "https://dummyimage.com/721x401",
+    //     tag: ['All', 'APP']
+    //   },
+    //   {
+    //     name: "Portfolio Website",
+    //     description: "Lorem ipsum dolor sit amet consectetur adipisicing",
+    //     image: "https://dummyimage.com/721x401",
+    //     tag: ['All', 'APP']
+    //   },
+    //   {
+    //     name: "Portfolio Website",
+    //     description: "Lorem ipsum dolor sit amet consectetur adipisicing",
+    //     image: "https://dummyimage.com/721x401",
+    //     tag: ['All', 'ML']
+    //   },
+    //   {
+    //     name: "Portfolio Website",
+    //     description: "Lorem ipsum dolor sit amet consectetur adipisicing",
+    //     image: "https://dummyimage.com/721x401",
+    //     tag: ['All', 'APP']
+    //   },
+    // ];
+
  
   } else {
     return res.status(405).json({ message: "This method is not allowed" });

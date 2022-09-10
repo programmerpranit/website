@@ -4,6 +4,8 @@ import dbConnect from "../../middleware/mongo";
 import Blog from "../../models/Blog";
 
 const Blogs = ({blogList}) => {
+
+  console.log(blogList)
   // const [blogs, setBlogs] = useState([]);
 
   // const data = [
@@ -38,7 +40,7 @@ const Blogs = ({blogList}) => {
   // }, []);
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="body-font">
       <div className="pcontainer px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
           {blogList && blogList.map((blog) => (
@@ -95,6 +97,23 @@ const Blogs = ({blogList}) => {
               </div>
             </div>
           ))}
+
+
+          {blogList.length == 0 && 
+
+          <div className="pcontainer h-[80vh] flex justify-center flex-col items-center text-center">
+          <h3>Sorry This section is under development</h3>
+          <br />
+          <h4>
+            <Link href={"/projects"}>
+              <span className="text-blue cursor-pointer">Click here</span>
+            </Link>{" "}
+            to check my projects
+          </h4>
+        </div>
+
+          }
+
         </div>
       </div>
     </section>

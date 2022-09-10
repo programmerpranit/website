@@ -19,7 +19,7 @@ const ProjectDetails = ({ project }) => {
         </Head>
       )}
 
-      {project && (
+      {!project && (
         <div className="pcontainer h-[80vh] flex justify-center flex-col items-center text-center">
           <h3>Sorry No Project Found</h3>
           <br />
@@ -33,50 +33,45 @@ const ProjectDetails = ({ project }) => {
         </div>
       )}
 
-      {!project && (
+      {project && (
         <div className="md:mx-20 mt-10 flex flex-col md:flex-row">
           <div className="w-4/12">
             <Image src="/home-right.png" alt="image" width={500} height={500} />
-
-
           </div>
 
           <div className="w-8/12 p-10">
-            <h1 className="py-5">Lorem ipsum dolor sit amet.</h1>
-
-
+            <h1 className="py-5">{project.title}</h1>
 
             <div className="flex my-5">
+              {/* ["react", "javascript", "next.js", "mongodb"] */}
 
-
-            {["react", "javascript", "next.js", "mongodb"].map((stack) => (
-              <li
-              key={stack}
-              className="mr-2 border-2 rounded px-3 py-1 bg-slate-200 text-sm list-none uppercase font-semibold">
-                {stack}
-              </li>
-            ))}
+              {project.stack &&
+                project.stack.map((stack) => (
+                  <li
+                    key={stack}
+                    className="mr-2 border-2 rounded px-3 py-1 bg-slate-200 text-sm list-none uppercase font-semibold"
+                  >
+                    {stack}
+                  </li>
+                ))}
             </div>
 
             <div className="flex py-4">
 
-            <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
-              Source Code
-            </p>
-            <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
-              Deployed Link
-            </p>
-            <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
-              Demo Video
-            </p>
+              {project.github && (
+                <a  href={project.github} target="_blank" rel="noreferrer">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                    Source Code
+                  </p>
+                </a>
+              )}
 
+              <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                Demo Video
+              </p>
             </div>
 
-            <p className="py-5 text-black">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eum fugiat voluptatem! Repellat, veritatis nihil voluptate ipsum repudiandae eum error illum nulla aspernatur aliquid. Culpa fuga officia accusantium quia hic.
-            </p>
-
-
+            <p className="py-5 text-black">{project.description}</p>
           </div>
         </div>
       )}
@@ -99,6 +94,7 @@ export async function getServerSideProps(context) {
   } catch (error) {
     project = null;
   }
+  console.log(project);
 
   return {
     props: { project }, // will be passed to the page component as props
