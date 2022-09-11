@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import baseUrl from "../../../util/baseUrl";
+import dbConnect from "../../../middleware/mongo"
+import Project from "../../../models/Project"
+import Link from "next/link";
+
 
 const ProjectAdmin = ({ projects }) => {
   const [superUser, setSuperUser] = useState(false);
@@ -31,46 +35,51 @@ const ProjectAdmin = ({ projects }) => {
     }
   };
 
+  useEffect(() => {
+    validate()
+  }, [])
+  
+
   return (
     <>
       {superUser && (
-        <div className="flex flex-wrap">
-          {projects &&
-            projects.map((work, index) => (
-              <div className="p-4 md:w-1/3" key={index}>
-                <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ease-in-out transition-shadow ">
-                  <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center"
-                    src="https://dummyimage.com/721x401"
-                    alt="blog"
-                  />
-                  <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                      <div className="flex">
-                        {work.tag.map((category) => (
-                          <li
-                            key={category}
-                            className="mr-2 border-2 rounded px-2 hover:text-blue text-sm list-none uppercase font-semibold"
-                          >
-                            {category}
-                          </li>
-                        ))}
-                      </div>
-                    </h2>
-                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {work.name}
-                    </h1>
-                    <p className="leading-relaxed mb-3">{work.description}</p>
-                    {/* <div className="flex items-center flex-wrap">
-          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-            Learn More
-          </a>
-        </div> */}
+        <div className="flex flex-wrap mx-52">
+        {projects && projects.map((work, index) => (
+
+          <Link href={`/admin/project/${work._id}`} key={index}>
+          <div className="p-4 md:w-1/3" >
+            <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ease-in-out transition-shadow ">
+              <img
+                className="lg:h-48 md:h-36 w-full object-cover object-center"
+                src="https://dummyimage.com/721x401"
+                alt="blog"
+              />
+              <div className="p-6">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  <div className="flex">
+                  {work.tags && work.tags.map((category)=>(
+                      <li key={category}
+                          className='mr-2 border-2 rounded px-2 hover:text-blue text-sm list-none uppercase font-semibold'
+                      >{category}</li>
+                  )) }
                   </div>
-                </div>
+                </h2>
+                <h1 className="title-font text-lg font-semibold text-gray-900 mb-3">
+                  {work.title}
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  {work.shortDesc}
+                </p>
+                {/* <div className="flex items-center flex-wrap">
+                  <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                    Learn More
+                  </a>
+                </div> */}
               </div>
-            ))}
-        </div>
+            </div>
+          </div></Link>
+        ))}
+      </div>
       )}
 
       {!superUser && (
@@ -84,13 +93,13 @@ const ProjectAdmin = ({ projects }) => {
 
 export default ProjectAdmin;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   await dbConnect();
 
   let projects;
 
   try {
-    const data = await Blog.find({});
+    const data = await Project.find({});
     projects = JSON.parse(JSON.stringify(data));
   } catch (error) {
     const data = [];

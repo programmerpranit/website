@@ -69,7 +69,7 @@ const AdminPanel = () => {
 
       <h1 className="my-10">Admin Panel</h1>
 
-      <div className="model flex justify-between w-3/4 border-2 shadow-xl border-blue rounded-md hover:bg-sky-50 p-3">
+      <div className="model my-2 flex justify-between w-3/4 border-2 shadow-xl border-blue rounded-md hover:bg-sky-50 p-3">
         <Link href={"/admin/blog"}>
           <h4 className="cursor-pointer hover:text-blue">Blogs</h4>
         </Link>
@@ -81,17 +81,19 @@ const AdminPanel = () => {
         </Link>
       </div>
 
-      <div className="model flex justify-between w-3/4 border-2 shadow-xl border-blue rounded-md hover:bg-sky-50 p-3">
-        <Link href={"/admin/project"}>
+      <div className="model my-2 flex justify-between w-3/4 border-2 shadow-xl border-blue rounded-md hover:bg-sky-50 p-3">
+        <Link href={"/admin/project"} >
           <h4 className="cursor-pointer hover:text-blue">Projects</h4>
         </Link>
 
         <br/>
 
-        <Link href={"/admin/project/add"}>
+        <Link href={"/admin/project/add"} >
           <h4 className="cursor-pointer hover:text-blue">+ Add</h4>
         </Link>
       </div>
+
+
 
     </div> }
 

@@ -12,13 +12,6 @@ const handler = async (req, res) => {
     return res.status(401).json({ message: "You are not superuser" });
   }
 
-  // if (req.method == "GET") {
-
-  //   const data = await Project.find({});
-
-  //   return res.status(200).json(data);
-
-  // } else 
   
   if (req.method == "POST") {
 
@@ -40,35 +33,26 @@ const handler = async (req, res) => {
       return res.status(500).json({message: error});
     }
 
-  // } else if (req.method == "PUT") {
+  } else if (req.method == "PUT") {
 
+    console.log(req.body)
 
+    const { id, title, featuredImage, shortDesc, description, slug, stack, tags, github, link, demo } = req.body;
 
-    // const { title, slug, published, content, id, category, image } = req.body;
+    try {
 
-    // try {
+      await Project.findByIdAndUpdate(id, {
+        title, featuredImage, shortDesc, description, slug, stack, tags, github, link, demo
+      });
 
+      let project = await Project.findById(id);
 
-    //   await Blog.findByIdAndUpdate(id, {
-    //     title: title,
-    //     slug: slug,
-    //     published: published,
-    //     content: content,
-    //     category: category,
-    //     image: image
-    //   });
-    //   const blog = await Blog.findById(id);
-    //   // await blog.save();
+      return res.status(200).json(project);
 
-    //   return res.status(200).json(blog);
-
-    // } catch (error) {
-    //   console.log(error);
+    } catch (error) {
       
-    //   return res.status(500).json({ message: "Failed to upload blog" });
-      
-    //   // return res.status(500).json({ message: "Some Unknown error occured while updating the blog" });
-    // }
+      return res.status(500).json({ message: "Some Unknown error occured while updating the Project" });
+    }
 
      
     
