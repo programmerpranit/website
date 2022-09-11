@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import baseUrl from "../util/baseUrl";
+import Link from "next/link";
 
 const Projects = () => {
   const [works, setWorks] = useState([]);
@@ -59,13 +60,24 @@ const Projects = () => {
 
         <div className="flex flex-wrap">
           {filterWork.map((work, index) => (
-            <div className="p-4 md:w-1/3" key={index}>
+
+            <Link key={index} href={`/projects/${work.slug}`}>
+
+            <div className="p-4 md:w-1/3" >
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ease-in-out transition-shadow ">
-                <img
+
+              {work.featuredImage != "" && 
+              <img
+                  className="lg:h-48 md:h-36 w-full object-cover object-center"
+                  src={work.featuredImage}
+                  alt="Project"
+                /> }
+
+                {work.featuredImage == "" && <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src="https://dummyimage.com/721x401"
                   alt="blog"
-                />
+                />}
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     <div className="flex">
@@ -89,7 +101,7 @@ const Projects = () => {
                   </div> */}
                 </div>
               </div>
-            </div>
+            </div></Link>
           ))}
         </div>
       </div>

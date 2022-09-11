@@ -177,7 +177,7 @@ const EditProject = ({ oldProject }) => {
                 placeholder="Add TAG"
                 value={tag}
                 onChange={(e) => {
-                  setTag(e.target.value);
+                  setTag(e.target.value.toUpperCase());
                 }}
               />
 

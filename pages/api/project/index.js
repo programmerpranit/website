@@ -35,7 +35,6 @@ const handler = async (req, res) => {
 
   } else if (req.method == "PUT") {
 
-    console.log(req.body)
 
     const { id, title, featuredImage, shortDesc, description, slug, stack, tags, github, link, demo } = req.body;
 

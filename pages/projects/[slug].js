@@ -36,7 +36,7 @@ const ProjectDetails = ({ project }) => {
       {project && (
         <div className="md:mx-20 mt-10 flex flex-col md:flex-row">
           <div className="w-4/12">
-            <Image src="/home-right.png" alt="image" width={500} height={500} />
+            {project.featuredImage != "" && <Image src={project.featuredImage} alt="image" width={500} height={500} />}
           </div>
 
           <div className="w-8/12 p-10">
@@ -65,10 +65,22 @@ const ProjectDetails = ({ project }) => {
                   </p>
                 </a>
               )}
+              {project.link != "" && (
+                <a  href={project.link} target="_blank" rel="noreferrer">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                  Deployed Link
+                  </p>
+                </a>
+              )}
+              {project.demo != "" && (
+                <a  href={project.github} target="_blank" rel="noreferrer">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                    Demo Video
+                  </p>
+                </a>
+              )}
 
-              <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
-                Demo Video
-              </p>
+              
             </div>
 
             <p className="py-5 text-black">{project.description}</p>
@@ -94,7 +106,6 @@ export async function getServerSideProps(context) {
   } catch (error) {
     project = null;
   }
-  console.log(project);
 
   return {
     props: { project }, // will be passed to the page component as props
