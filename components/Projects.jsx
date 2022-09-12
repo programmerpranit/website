@@ -22,12 +22,10 @@ const Projects = () => {
       `${baseUrl}/api/project/list`
     );
     const response = await fetchResponse.json();
-
-    console.log(response)
-
     if (fetchResponse.status == 200) {
-      setFilterWork(response);
-      setWorks(response);
+      console.log(response.reverse())
+      setFilterWork(response.reverse());
+      setWorks(response.reverse());
     } 
   }
 

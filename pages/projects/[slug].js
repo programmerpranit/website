@@ -36,7 +36,7 @@ const ProjectDetails = ({ project }) => {
       {project && (
         <div className="md:mx-20 mt-10 flex flex-col md:flex-row">
           <div className="w-4/12">
-            {project.featuredImage != "" && <Image src={project.featuredImage} alt="image" width={500} height={500} />}
+            {project.featuredImage != "" && <img src={project.featuredImage} alt="" />}
           </div>
 
           <div className="md:w-8/12 p-10">
@@ -60,14 +60,14 @@ const ProjectDetails = ({ project }) => {
 
               {project.github && (
                 <a  href={project.github} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-8">
                     Source Code
                   </p>
                 </a>
               )}
               {project.link != "" && (
                 <a  href={project.link} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-8">
                   Deployed Link
                   </p>
                 </a>
