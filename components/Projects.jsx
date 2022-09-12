@@ -5,12 +5,12 @@ import Link from "next/link";
 const Projects = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("ALL");
 
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
-    if (item === 'All') {
+    if (item === 'ALL') {
         setFilterWork(works);
       } else {
         setFilterWork(works.filter((work) => work.tags.includes(item)));
@@ -45,7 +45,7 @@ const Projects = () => {
         <h2 className="text-4xl">RECENTLY DONE PROJECT</h2>
 
         <div className="flex mt-10">
-          {["All", "APP", "Web", "BlockChain", "ML"].map((item, index) => (
+          {["ALL", "APP", "WEB", "BLOCKCHAIN", "ML"].map((item, index) => (
             <div key={index} onClick={() => handleWorkFilter(item)}>
               <li
                 className={`mr-7 hover:text-blue cursor-pointer text-sm list-none uppercase font-semibold ${
@@ -61,9 +61,9 @@ const Projects = () => {
         <div className="flex flex-wrap">
           {filterWork.map((work, index) => (
 
-            <Link key={index} href={`/projects/${work.slug}`}>
+            <Link key={index}  href={`/projects/${work.slug}`}>
 
-            <div className="p-4 md:w-1/3" >
+            <div className="p-4 md:w-1/3 cursor-pointer" >
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ease-in-out transition-shadow ">
 
               {work.featuredImage != "" && 
@@ -75,7 +75,7 @@ const Projects = () => {
 
                 {work.featuredImage == "" && <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src="https://dummyimage.com/721x401"
+                  src="https://dummyimage.com/720x400"
                   alt="blog"
                 />}
                 <div className="p-6">

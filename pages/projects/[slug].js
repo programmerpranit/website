@@ -39,7 +39,7 @@ const ProjectDetails = ({ project }) => {
             {project.featuredImage != "" && <Image src={project.featuredImage} alt="image" width={500} height={500} />}
           </div>
 
-          <div className="w-8/12 p-10">
+          <div className="md:w-8/12 p-10">
             <h1 className="py-5">{project.title}</h1>
 
             <div className="flex my-5">
@@ -56,25 +56,25 @@ const ProjectDetails = ({ project }) => {
                 ))}
             </div>
 
-            <div className="flex py-4">
+            <div className="flex md:flex-row flex-col py-4">
 
               {project.github && (
                 <a  href={project.github} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
                     Source Code
                   </p>
                 </a>
               )}
               {project.link != "" && (
                 <a  href={project.link} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
                   Deployed Link
                   </p>
                 </a>
               )}
               {project.demo != "" && (
                 <a  href={project.github} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mx-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
                     Demo Video
                   </p>
                 </a>
