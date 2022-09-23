@@ -35,21 +35,21 @@ const ProjectDetails = ({ project }) => {
 
       {project && (
         <div className="md:mx-20 mt-10 flex flex-col md:flex-row">
-          <div className="w-4/12">
+          <div className="md:w-4/12">
             {project.featuredImage != "" && <img src={project.featuredImage} alt="" />}
           </div>
 
           <div className="md:w-8/12 p-10">
             <h1 className="py-5">{project.title}</h1>
 
-            <div className="flex my-5">
+            <div className="flex flex-wrap my-5">
               {/* ["react", "javascript", "next.js", "mongodb"] */}
 
               {project.stack &&
                 project.stack.map((stack) => (
                   <li
                     key={stack}
-                    className="mr-2 border-2 rounded px-3 py-1 bg-slate-200 text-sm list-none uppercase font-semibold"
+                    className="mr-2 border-2 rounded my-1 px-3 py-1 bg-slate-200 text-sm list-none uppercase font-semibold"
                   >
                     {stack}
                   </li>
@@ -60,21 +60,21 @@ const ProjectDetails = ({ project }) => {
 
               {project.github && (
                 <a  href={project.github} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-8">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer my-2 mr-8">
                     Source Code
                   </p>
                 </a>
               )}
               {project.link != "" && (
                 <a  href={project.link} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-8">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer my-2 mr-8">
                   Deployed Link
                   </p>
                 </a>
               )}
               {project.demo != "" && (
                 <a  href={project.github} target="_blank" rel="noreferrer">
-                  <p className="font-semibold text-black hover:text-blue cursor-pointer mr-4">
+                  <p className="font-semibold text-black hover:text-blue cursor-pointer my-2 mr-4">
                     Demo Video
                   </p>
                 </a>
