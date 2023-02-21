@@ -11,11 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Pranit Patil</title>
-        <meta name="description" content="Portfolio Website" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
 
       <ToastContainer
         position="top-right"
